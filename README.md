@@ -1,5 +1,5 @@
 # LIVING INCOME ANALYSIS
-analysis of  Gap to the Living Income Benchmark in Ghana and Cotê d'Ivoire
+## analysis of  Gap to the Living Income Benchmark in Ghana and Cotê d'Ivoire
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
 [Last update 01/09/2020] 
