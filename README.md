@@ -1,25 +1,21 @@
-# LIVING INCOME ANALYSIS
-## analysis of  Gap to the Living Income Benchmark in Ghana and Cotê d'Ivoire
+# LIVING INCOME ANALYSIS: a machine learning approach
+
+## predicting if farmers reach the Living Income Benchmark in Ghana and Cotê d'Ivoire
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
-[Last update 01/09/2020] 
+[Last update 19/09/2020] 
 
-Builds on previous work:
+In this repo I use previous [data](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/82TWZJ) from a [larger project](https://www.kit.nl/project/demystifying-cocoa-sector/) to develop a Machine Learning model to predict if farmers reach the living income benchmark value.
 
-https://www.kit.nl/wp-content/uploads/2019/01/Analysis-of-the-income.pdf
+The key files in this repo are:
 
-https://docs.wixstatic.com/ugd/0c5ab3_93560a9b816d40c3a28daaa686e972a5.pdf
+* [LivingIncomeAnalysis.ipynb](LivingIncomeAnalysis.ipynb) : notebook where I wrangle the data, compute indicators and analyze whether farmers reach a living income
+* [LivingIncome_MachineLearning.ipynb](LivingIncome_MachineLearning.ipynb) : notebook where I tune and fit the machine learning model
 
-A detailed Guidance Manual can be found at:
+# Blog post:
+A blog post about the findings from this analysis can be found at [Medium](https://medium.com/@tyszler.jobs/are-cocoa-farmers-reaching-a-living-income-f7724af574c4?sk=344c18d46a7fd402d3a137061c6ba89a)
 
-https://www.living-income.com/papersandreports
-
-or directly at:
-
-https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2F0c5ab38c-aabb-4d3d-84e9-056ccebab450.usrfiles.com%2Fugd%2F0c5ab3_74a43f3647724bc58caf4daaa570482b.pdf&data=02%7C01%7Cm.tyszler%40kit.nl%7Cf199ee7ce9bd423b54ff08d838827f5f%7C99193bd4318d47c6a89624e15f7a7e1b%7C1%7C1%7C637321480450701968&sdata=HkxU0DQng8cl3PW%2B6oL7NK%2BuHGcQQzhtpKXT5UMAhZE%3D&reserved=0
-
-
-### Authors
+### Author
 
 Marcelo Tyszler. KIT Royal Tropical Institute, Netherlands. m.tyszler@kit.nl
 
