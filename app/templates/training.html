@@ -1,0 +1,23 @@
+{% extends "master.html" %}
+
+{% block content %}
+    <div class="page-header">
+    	<br>
+        <h1 class="text-center">Overview of Training Dataset</h1>
+        <p class="text-center"> The training dataset has {{n_rows}} rows and {{n_cols}} categories </p>
+    </div>
+
+	{% for id in ids %}
+	    <div id="{{id}}"></div>
+	{% endfor %}
+
+	<script type="text/javascript">
+	    const graphs = {{graphJSON | safe}};
+	    const ids = {{ids | safe}};
+	    for(let i in graphs) {
+	        Plotly.plot(ids[i], graphs[i].data, graphs[i].layout);
+	    }
+	</script>
+{% endblock %}
+
+

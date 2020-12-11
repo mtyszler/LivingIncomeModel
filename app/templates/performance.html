@@ -1,0 +1,49 @@
+{% extends "master.html" %}
+
+{% block user_classifier %}
+<div class="page-header">
+    <br>
+    <h1 class="text-center">Performance of the ML model</h1>
+    <p class="text-center">The model had an 
+        <strong>accuracy</strong> of 95%, 
+        <strong>precision</strong> of 74%, 
+        <strong>recall</strong> of 67% and a 
+        <strong>f1-score</strong> of 69% in the testing set</p>
+</div>
+
+<div class="jumbotron">
+    <div class="container">
+        <p class="text-center"><strong> Sample message from the training dataset </strong> </p>
+        <div class="row">
+            <div class="col-lg-12 form-group-lg">
+                <p class="text-center text-muted">{{msg}}</p>
+                <p class="text-center"><a class="btn btn-success btn-lg" href="/performance" role="button">randomize message</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<p>For the example above, there were {{correct}} <strong>correct</strong> classification(s) and {{incorrect}} <strong>incorrect</strong> classification(s)</p>
+<br>
+
+<table class="table">
+    <tr>
+        <th>Category</th>
+        <th>Target</th>
+        <th>Prediction</th>
+    </tr>
+    {% for category, target, prediction in classification_result %}
+        {% if target == prediction %}
+            <tr class="success">
+        {% else %}
+            <tr class="danger">
+        {% endif %}
+                <td>{{category.replace('_', ' ')}}</td>
+                <td>{{target}}</td>
+                <td>{{prediction}}</td>
+            </tr>
+    {% endfor %}
+</table>
+{% endblock %}
