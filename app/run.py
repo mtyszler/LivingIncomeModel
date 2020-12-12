@@ -116,9 +116,34 @@ def training():
 # web page that handles user query and displays model results
 @app.route('/go')
 def go():
-    # save user input in query
-    query = request.args.get('query', '')
+    # read user input
+    input1 = request.args.get('input1', type=float)/100 # converts percentage to number [0,1]
+    input2 = request.args.get('input2', type=float)
+    input3 = request.args.get('input3', type=float)
+    input4 = request.args.get('input4', type=float)
+    input5 = request.args.get('input5', type=float)
+    input6 = request.args.get('input6', type=float)
+    input7 = request.args.get('input7', type=float)/100 # converts percentage to number [0,1]
+    input8 = request.args.get('input8', type=float)
+    input9 = request.args.get('input9', type=float)/100 # converts percentage to number [0,1]
+    input10 = request.args.get('input10', type=float)
 
+    # collect in an array
+    X = np.array([
+        input1, 
+        input2, 
+        input3, 
+        input4,
+        input5, 
+        input6, 
+        input7, 
+        input8, 
+        input9, 
+        input10])
+
+    # ensure shape is correct
+    X  = X.reshape(1, -1)
+    
     # use model to predict classification for query
     classification_labels = model.predict([query])[0]
     classification_results = dict(zip(df.columns[4:], classification_labels))
