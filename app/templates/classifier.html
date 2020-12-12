@@ -13,61 +13,61 @@
                     <div class="form-group">
                         <label for="input2" class="col-sm-6 control-label">Cocoa yield (kg/ha)</label>
                         <div class="col-sm-4">
-                            <input type="number" class="form-control" id="input2" min=0>
+                            <input type="number" class="form-control" id="input2" name="input2" min=0 value="{{ request.args.get('input2') }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="input3" class="col-sm-6 control-label">Cocoa production (kg)</label>
                         <div class="col-sm-4">
-                            <input type="number" class="form-control" id="input3" min=0>
+                            <input type="number" class="form-control" id="input3" name="input3" min=0 value="{{ request.args.get('input3') }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inpu109" class="col-sm-6 control-label">Land used to cultivate all crops (ha)</label>
                         <div class="col-sm-4">
-                            <input type="number" class="form-control" id="input10" min=0>
+                            <input type="number" class="form-control" id="input10" name="input10" min=0 value="{{ request.args.get('input10') }}">
                         </div>
                     </div>
                      <div class="form-group">
                         <label for="input5" class="col-sm-6 control-label">Cocoa land owned (ha)</label>
                         <div class="col-sm-4">
-                            <input type="number" class="form-control" id="input5" min=0>
+                            <input type="number" class="form-control" id="input5" name="input5" min=0 value="{{ request.args.get('input5') }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="input4" class="col-sm-6 control-label">Productive land under cocoa (ha)*</label>
                         <div class="col-sm-4">
-                            <input type="number" class="form-control" id="input4" min=0>
+                            <input type="number" class="form-control" id="input4" name="input4" min=0 value="{{ request.args.get('input4') }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="input6" class="col-sm-6 control-label">Hectares with trees between 5 and 25 years old (ha)</label>
                         <div class="col-sm-4">
-                            <input type="number" class="form-control" id="input6" min=0>
+                            <input type="number" class="form-control" id="input6" name="input6" min=0 value="{{ request.args.get('input6') }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="input1" class="col-sm-6 control-label">Estimated income percentage from sales of cocoa (0 to 100)</label>
                         <div class="col-sm-4">
-                            <input type="number" class="form-control" id="input1" step=".01" min=0 max=100>
+                            <input type="number" class="form-control" id="input1" name="input1" min=0 max=100 value="{{ request.args.get('input1') }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="input9" class="col-sm-6 control-label">Estimated income percentage from sales of other crops (0 to 100)</label>
                         <div class="col-sm-4">
-                            <input type="number" class="form-control" id="input9" min=0 max=100>
+                            <input type="number" class="form-control" id="input9" name="input9" min=0 max=100 value="{{ request.args.get('input9') }}">
                         </div>
                     </div>
                     <div class="form-group" class="col-sm-6 control-label">
                         <label for="input7" class="col-sm-6 control-label">Estimated income percentage from own small business or trading (0 to 100)</label>
                         <div class="col-sm-4">
-                            <input type="number" class="form-control" id="input7" min=0 max=100>
+                            <input type="number" class="form-control" id="input7" name="input7" min=0 max=100 value="{{ request.args.get('input7') }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="input8" class="col-sm-6 control-label">Age of the head (years)</label>
                         <div class="col-sm-4">
-                            <input type="number" class="form-control" id="input8" min=0>
+                            <input type="number" class="form-control" id="input8" name="input8" min=0 value="{{ request.args.get('input2') }}">
                         </div>
                     </div>
                     <p style="font-size:11px"><i>*Productive land under cocoa = Hectares with trees 5 years old and older</i></p>
