@@ -6,9 +6,11 @@
         <h1 class="text-center">Living Income Model</h1>
         <p class="text-center">Predicting if farming household reach a living income</p>
         <hr />
-      
+        
         <div class="row">
             <div class="col-lg-12 form-group-lg">
+                {% block message %}
+                {% endblock %}
                 <form action="/go" method="get" class="well form-horizontal">
                     <div class="form-group">
                         <label for="input2" class="col-sm-6 control-label">Cocoa yield (kg/ha)</label>
@@ -78,9 +80,6 @@
                 </form>
             </div>
         </div>
-
-        {% block message %}
-        {% endblock %}
     </div>
 </div>
 {% endblock %}
