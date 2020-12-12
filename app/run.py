@@ -19,9 +19,9 @@ app = Flask(__name__)
 
 # load model
 try:
-    model = joblib.load("../models/classifier.pkl")
+    model = joblib.load("../models/LI_simplified_model.pkl")
 except:
-    model = joblib.load("models/classifier.pkl")
+    model = joblib.load("models/LI_simplified_model.pkl")
 
 
 # load data
