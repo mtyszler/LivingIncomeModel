@@ -145,14 +145,14 @@ def go():
     X  = X.reshape(1, -1)
     
     # use model to predict classification for query
-    classification_labels = model.predict([query])[0]
-    classification_results = dict(zip(df.columns[4:], classification_labels))
+    classification_label = model.predict(X)[0]
+    classification_prob = np.round(model.predict_proba(X)[0][1]*100,0)
 
     # This will render the go.html Please see that file. 
     return render_template(
         'go.html',
-        query=query,
-        classification_result=classification_results
+        classification_label=classification_label,
+        classification_prob=classification_prob
     )
 
 
