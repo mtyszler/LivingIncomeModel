@@ -146,7 +146,7 @@ def go():
     
     # use model to predict classification for query
     classification_label = model.predict(X)[0]
-    classification_prob = np.round(model.predict_proba(X)[0][1]*100,0)
+    classification_prob = np.int(np.round(model.predict_proba(X)[0][1]*100,0))
 
     # This will render the go.html Please see that file. 
     return render_template(
