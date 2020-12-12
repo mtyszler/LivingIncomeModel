@@ -3,13 +3,13 @@
 {% block message %}
     {% if classification_label == True %}
     <div style="background:lightgreen !important" class="jumbotron">
-        <h4 class="text-center"><b>Farmer REACHES a Living income</b></h4>
-        <p class="text-center"><b>with a chance of <i>{{classification_prob}}%</i></b></p>
+        <h4 class="text-center"><b>Household REACHES a Living income</b></h4>
+        <p class="text-center"><b>with a chance of {{classification_prob}}%</b></p>
     </div>
     {% else %}
     <div style="background:red !important" class="jumbotron">
-        <h4 class="text-center"><b>Farmer DOES NOT reach a Living income</b></h4>
-        <p class="text-center"><b>The chance is of reaching is <i>{{classification_prob}}%</i></b></p>
+        <h4 class="text-center"><b>Household DOES NOT reach a Living income</b></h4>
+        <p class="text-center"><b>The chance is of reaching is {{classification_prob}}%</b></p>
     </div>
     {% endif %}
 {% endblock %}
