@@ -11,24 +11,8 @@ from sqlalchemy import create_engine
 
 import sys
 
-'''
-1. loads custom tokenizer:
-tokenize
-
-The tokenize function is split from the train_classifier.py for two reasons:
-a. modulerize the code
-b. allow the app to run properly without the need to repeat the hard coding of the 
-   tokenize function there. Moreover, I noticed that when the tokenize function was
-   in the same script as the train_classifier, after dumping the best model to a 
-   pickle file, the load in the (live web)app did not work because the load was expecting a 
-   tokenize function in the __main__ environment. 
-
-   By importing the tokenize function in the exact same way in both thr train_classiier.py 
-   and run.py I avoid any conflicts and the (live web)app runs as expected.
-'''
 sys.path.append('../')
 sys.path.append('.')
-from models.supporting_functions import tokenize
 
 app = Flask(__name__)
 
