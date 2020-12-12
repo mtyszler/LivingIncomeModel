@@ -1,22 +1,15 @@
 {% extends "classifier.html" %}
 
 {% block message %}
-    <hr />
-    <h4 class="text-center">MESSAGE</h4>
-    <p class="text-center"><i>{{query}}</i></p>
-{% endblock %}
-
-{% block content %}
-    <h1 class="text-center">Result</h1>
-        <ul class="list-group">
-            {% for category, classification in classification_result.items() %}
-                {% if classification == 1 %}
-                    <li class="list-group-item list-group-item-success text-center">{{category.replace('_', ' ').title()}}</li>
-                {% else %}
-                    <li class="list-group-item list-group-item-dark text-center">{{category.replace('_', ' ').title()}}</li>
-                {% endif %}
-            {% endfor %}
-        </ul>
-
-
+    {% if classification_label == True %}
+    <div style="background:lightgreen !important" class="jumbotron">
+        <h4 class="text-center"><b>Farmer REACHES a Living income</b></h4>
+        <p class="text-center"><b>with a chance of <i>{{classification_prob}}%</i></b></p>
+    </div>
+    {% else %}
+    <div style="background:red !important" class="jumbotron">
+        <h4 class="text-center"><b>Farmer DOES NOT reach a Living income</b></h4>
+        <p class="text-center"><b>The chance is of reaching is <i>{{classification_prob}}%</i></b></p>
+    </div>
+    {% endif %}
 {% endblock %}
