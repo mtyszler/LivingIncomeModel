@@ -116,7 +116,7 @@ def training():
 # web page that handles user query and displays model results
 @app.route('/go')
 def go():
-    # read user input
+    # read user input (see classifier.html)
     input1 = request.args.get('input1', type=float)/100 # converts percentage to number [0,1]
     input3 = request.args.get('input3', type=float)
     input4 = request.args.get('input4', type=float)
