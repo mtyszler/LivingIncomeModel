@@ -118,9 +118,9 @@ def training():
 def go():
     # read user input
     input1 = request.args.get('input1', type=float)/100 # converts percentage to number [0,1]
-    input2 = request.args.get('input2', type=float)
     input3 = request.args.get('input3', type=float)
     input4 = request.args.get('input4', type=float)
+    input2 = input3/input4 
     input5 = request.args.get('input5', type=float)
     input6 = request.args.get('input6', type=float)
     input7 = request.args.get('input7', type=float)/100 # converts percentage to number [0,1]

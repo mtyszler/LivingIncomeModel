@@ -12,11 +12,13 @@
                 {% block message %}
                 {% endblock %}
                 <form action="/go" method="get" class="well form-horizontal">
+                    <!---
                     <div class="form-group">
                         <label for="input2" class="col-sm-6 control-label">Cocoa yield (kg/ha)</label>
                         <div class="col-sm-4">
                             <input type="number" class="form-control" id="input2" name="input2" min=0 value="{{ request.args.get('input2') }}">
                         </div>
+                    -->
                     </div>
                     <div class="form-group">
                         <label for="input3" class="col-sm-6 control-label">Cocoa production (kg)</label>
