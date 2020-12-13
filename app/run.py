@@ -42,64 +42,55 @@ def index():
 @app.route('/training')
 def training():
     # get shape info:
-    X_len = len(df.index) 
-    Y_len = len(df.iloc[:, 4:].columns)
-
+    n_obs = len(data.index) 
+    n_features = len(data.columns)-1
 
     # extract data needed for visuals
-    # TODO: Below is an example - modify to extract data for your own visuals
-    genre_counts = df.groupby('genre').count()['message']
-    genre_names = list(genre_counts.index)
-
-    categs_sorted = df.iloc[:, 4:].mean().sort_values(ascending=False)
-    categ_share = categs_sorted
-    categ_names = list(categ.replace('_', ' ') for categ in categs_sorted.index)
+    LI_counts = data.groupby('Living Income Achieved').count().iloc[:,0]/n_obs*100
 
     # create visuals
-    # TODO: Below is an example - modify to create your own visuals
     graphs = [
         # graph 1
         {
             'data': [
                 Bar(
-                    x=genre_names,
-                    y=genre_counts
+                    y=LI_counts,
+                    x=['Did not achieve', 'Achieved']
                 )
             ],
 
             'layout': {
-                'title': 'Distribution of Message Genres',
-                'yaxis': {
-                    'title': "Count"
-                },
-                'xaxis': {
-                    'title': "Genre"
-                }
-            }
-        },
-
-        # graph 2
-        {
-            'data': [
-                Bar(
-                    x=categ_names,
-                    y=categ_share * 100
-                )
-            ],
-
-            'layout': {
-                'title': 'Occurrences of Categories',
-                'orientation': 'v',
+                'title': 'How many achieved a Living Income?',
                 'yaxis': {
                     'title': "Proportion (%)",
                     'range': [1, 100],
                     'hoverformat': '.2f'
-                },
-                'xaxis': {
-                    'title': "Category"
                 }
             }
         }
+
+        # graph 2
+    # {
+    #     'data': [
+    #         Bar(
+    #             x=categ_names,
+    #             y=categ_share * 100
+    #         )
+    #     ],
+
+    #     'layout': {
+    #         'title': 'Occurrences of Categories',
+    #         'orientation': 'v',
+    #         'yaxis': {
+    #             'title': "Proportion (%)",
+    #             'range': [1, 100],
+    #             'hoverformat': '.2f'
+    #         },
+    #         'xaxis': {
+    #             'title': "Category"
+    #         }
+    #     }
+    # }
     ]
 
     # encode plotly graphs in JSON
@@ -107,7 +98,7 @@ def training():
     graphJSON = json.dumps(graphs, cls=plotly.utils.PlotlyJSONEncoder)
 
     # render web page with plotly graphs
-    return render_template('training.html', ids=ids, graphJSON=graphJSON, n_rows = X_len, n_cols = Y_len)
+    return render_template('training.html', ids=ids, graphJSON=graphJSON, n_obs = n_obs, n_features = n_features)
 
 
 # web page that handles user query and displays model results
