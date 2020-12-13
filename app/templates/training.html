@@ -7,16 +7,52 @@
         <p class="text-center"> The training dataset has {{n_obs}} observations and {{n_features}} features </p>
     </div>
 
-	{% for id in ids %}
-	    <div id="{{id}}"></div>
-	{% endfor %}
 
+    <div id="{{ids[0]}}"></div>
+	
+	<div class="dropdown" id="myDropdown">
+	  <button class="btn btn-primary dropdown-toggle mr-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+ 		Distribution of [{{ids[1]}}]
+	    <span class="caret"></span>
+	  </button>
+	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+	  	{% for id in ids %}
+	  		{% if id != ids[0] %}
+	    		<li><a href='javascript:void();'>{{id}}</a></li>
+	    	{% endif %}
+		{% endfor %}
+	  </ul>
+	</div>
+
+	<div id="selected-graph"></div>
+	
 	<script type="text/javascript">
+		// process graph object
 	    const graphs = {{graphJSON | safe}};
 	    const ids = {{ids | safe}};
-	    for(let i in graphs) {
-	        Plotly.plot(ids[i], graphs[i].data, graphs[i].layout);
-	    }
+
+		// plot first graph:
+		Plotly.plot(ids[0], graphs[0].data, graphs[0].layout);
+
+	    //cache the select and span elements
+		var graph_placeholder = document.getElementById("selected-graph");
+		// plot first distribution graph:
+		Plotly.plot("selected-graph", graphs[1].data, graphs[1].layout);
+
+		//Update graph when it changes
+		$(function(){
+  
+		  $(".dropdown-menu li a").click(function(){
+
+	    	$(".btn:first-child").text("Distribution of [".concat($(this).text(),"]"));
+
+	    	var this_id = ids.indexOf($(this).text());
+		    Plotly.newPlot("selected-graph", graphs[this_id].data, graphs[this_id].layout);
+		
+		  });
+
+		});
+
 	</script>
 {% endblock %}
 

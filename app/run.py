@@ -112,14 +112,14 @@ def training():
             }
         }
     ]
+    ids = ['Living Income Achieved']
 
     # create histograms for each column
     for col in data.columns[1:]:
         graphs.append(LI_histogram(col))
-        
+        ids.append(col)        
 
     # encode plotly graphs in JSON
-    ids = ["graph-{}".format(i) for i, _ in enumerate(graphs)]
     graphJSON = json.dumps(graphs, cls=plotly.utils.PlotlyJSONEncoder)
 
     # render web page with plotly graphs
