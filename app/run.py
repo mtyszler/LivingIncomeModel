@@ -111,30 +111,12 @@ def training():
                 }
             }
         }
-
-        # graph 2
-    # {
-    #     'data': [
-    #         Bar(
-    #             x=categ_names,
-    #             y=categ_share * 100
-    #         )
-    #     ],
-
-    #     'layout': {
-    #         'title': 'Occurrences of Categories',
-    #         'orientation': 'v',
-    #         'yaxis': {
-    #             'title': "Proportion (%)",
-    #             'range': [1, 100],
-    #             'hoverformat': '.2f'
-    #         },
-    #         'xaxis': {
-    #             'title': "Category"
-    #         }
-    #     }
-    # }
     ]
+
+    # create histograms for each column
+    for col in data.columns[1:]:
+        graphs.append(LI_histogram(col))
+        
 
     # encode plotly graphs in JSON
     ids = ["graph-{}".format(i) for i, _ in enumerate(graphs)]
