@@ -38,6 +38,49 @@ def index():
     # render base page
     return render_template('classifier.html')
 
+def LI_histogram(colname):
+    '''
+    Create a histogram overlaying those who achieved vs 
+    those who did not achieved a Living Income
+    
+    input: column name, existing in data
+    output: dictionary to be appended to graph object
+
+    '''
+    LI = {
+            'data': [
+                {
+                    'type':'histogram',
+                    'histnorm': 'percent',
+                    'x':data[data['Living Income Achieved']==False][colname],
+                    'name': 'Did not achieve',
+                    'opacity': '0.5'
+                },
+                {
+                    'type':'histogram',
+                    'histnorm': 'percent',
+                    'x':data[data['Living Income Achieved']==True][colname],
+                    'name': 'Achieved',
+                    'opacity': '0.5'
+                }
+
+            ],
+
+            'layout': {
+                'title': 'Distribution of [' + colname +']',
+                'yaxis': {
+                    'title': "Proportion (%)",
+                    #'range': [1, 100],
+                    'hoverformat': '.2f'
+                },
+                'barmode': "overlay"#,
+                #'xaxis': {
+                #    'title': "Category"
+                #}
+            }
+        }
+
+    return LI
 
 @app.route('/training')
 def training():
