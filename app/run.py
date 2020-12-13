@@ -27,12 +27,9 @@ except:
 
 # load data
 try:
-    engine = create_engine('sqlite:///../data/DisasterResponse.db')
-    df = pd.read_sql_table('classified_msgs', engine)
+    data = joblib.load("../data/data_for_restricted_ML.pkl")
 except:
-    engine = create_engine('sqlite:///data/DisasterResponse.db')
-    df = pd.read_sql_table('classified_msgs', engine)
-
+    data = joblib.load("data/data_for_restricted_ML.pkl")
 
 # index webpage displays cool visuals and receives user input text for model
 @app.route('/')
