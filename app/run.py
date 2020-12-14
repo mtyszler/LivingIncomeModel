@@ -6,7 +6,6 @@ import random
 
 from flask import Flask
 from flask import render_template, request, jsonify
-from plotly.graph_objs import Bar
 import joblib
 
 from sklearn.model_selection import train_test_split
@@ -104,13 +103,21 @@ def dataset():
 
     # create visuals
     graphs = [
-        # graph 1: bar chart of number of household achieving the LI
+        # graph 1: bar chart of number of household achieving the LI, training
         {
             'data': [
-                Bar(
-                    y=y_train.value_counts()/n_obs_train*100,
-                    x=['Did not achieve', 'Achieved']
-                )
+                {
+                    'type':'bar',
+                    'y':y_train.value_counts()/n_obs_train*100,
+                    'x':['Did not achieve', 'Achieved'],
+                    'name':"Training set"
+                },
+                {
+                    'type':'bar',
+                    'y':y_test.value_counts()/n_obs_test*100,
+                    'x':['Did not achieve', 'Achieved'],
+                    'name':"Testing set"
+                }
             ],
 
             'layout': {
@@ -119,7 +126,8 @@ def dataset():
                     'title': "Proportion (%)",
                     'range': [1, 100],
                     'hoverformat': '.2f'
-                }
+                },
+                'barmode':'group'
             }
         }
     ]
