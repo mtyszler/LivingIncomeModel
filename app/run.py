@@ -299,6 +299,13 @@ def performance():
         real_t=real_t, pred_t=pred_t
         )
 
+@app.route('/download')
+def download():
+
+    # render download page
+    return render_template(
+        'download.html'
+        )
 
 def main():
     app.run(host='0.0.0.0', port=3001, debug=True)

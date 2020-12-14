@@ -1,0 +1,43 @@
+{% extends "master.html" %}
+
+{% block content %}
+<div class="page-header">
+    <br>
+    <h1 class="text-center">Download the ML model</h1>
+
+    <!-- Auto width -->
+    <form method="get" action="static/LI_simplified_model.pkl">
+        <button class="btn"><i class="fa fa-download"></i> Download</button>
+    </form>
+
+    <h2> Using the model </h2>
+    <p> Simply download it and use it in <code>python</code>:</p>
+
+    <br>
+    <pre><code>
+        import joblib
+        import numpy as np
+        import pandas as pd
+
+        model = joblib.load("LI_simplified_model.pkl")
+
+        ## create X, with these columns:
+        # Estimated income percentage from sale of cocoa  (between 0-1)
+        # Cocoa production (kg/ha) (= Cocoa production (kg) / Productive land under cocoa (ha) )
+        # Cocoa production (kg)   
+        # Productive land under cocoa (ha)    
+        # Cocoa land owned (ha)   
+        # Hectares with trees between 5 and 25 years old  
+        # Estimated income percentage from own small business or trading  (between 0-1)
+        # Head: age 
+        # Estimated income percentage from sale of other crops  (between 0-1)  
+        # Land used to cultivate all crops (ha) 
+
+        classification_label = model.predict(X)
+        classification_prob = model.predict_proba(X)[:,1]*100
+
+    </code></pre>
+
+</div>
+
+{% endblock %}
