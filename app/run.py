@@ -204,7 +204,64 @@ def go():
     return render_template(
         'go.html',
         classification_label=classification_label,
-        classification_prob=classification_prob
+        classification_prob=classification_prob,
+        input_type="user"
+    )
+
+@app.route('/go_mean')
+def go_mean():
+    # Calculate means
+    X = np.array(data.mean())
+    X  = X.reshape(1, -1)
+
+    # round to simulate user input
+    input1 = np.int(np.round(X[0,0]*100,0)) # converts percentage to number [0,100]
+    input3 = np.int(np.round(X[0,2],0))
+    input4 = np.int(np.round(X[0,3],0))
+    input2 = input3/input4 
+    input5 = np.int(np.round(X[0,4],0)) 
+    input6 = np.int(np.round(X[0,5],0)) 
+    input7 = np.int(np.round(X[0,6]*100,0)) # converts percentage to number [0,100]
+    input8 = np.int(np.round(X[0,7],0)) 
+    input9 = np.int(np.round(X[0,8]*100,0)) # converts percentage to number [0,100]
+    input10 = np.int(np.round(X[0,9],0))
+
+    # collect in an array
+    X = np.array([
+        input1/100, 
+        input2, 
+        input3, 
+        input4,
+        input5, 
+        input6, 
+        input7/100, 
+        input8, 
+        input9/100, 
+        input10])
+
+    # ensure shape is correct
+    X  = X.reshape(1, -1)
+    
+    # use model to predict classification for query
+    classification_label = model.predict(X)[0]
+    classification_prob = np.int(np.round(model.predict_proba(X)[0][1]*100,0))
+
+    # This will render the go.html Please see that file. 
+    return render_template(
+        'go.html',
+        classification_label=classification_label,
+        classification_prob=classification_prob,
+        input_type = "server",
+        server_1 =  input1,
+        server_2 =  input2,
+        server_3 =  input3,
+        server_4 =  input4,
+        server_5 =  input5,
+        server_6 =  input6,
+        server_7 =  input7,
+        server_8 =  input8,
+        server_9 =  input9,
+        server_10 = input10
     )
 
 

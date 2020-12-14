@@ -23,55 +23,91 @@
                     <div class="form-group">
                         <label for="input3" class="col-sm-6 control-label">Cocoa production (kg)</label>
                         <div class="col-sm-4">
+                            {% if input_type == "server" %}
+                            <input type="number" class="form-control" id="input3" name="input3" min=0 value="{{ server_3 }}">
+                            {% else %}
                             <input type="number" class="form-control" id="input3" name="input3" min=0 value="{{ request.args.get('input3') }}">
+                            {% endif %}
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="input4" class="col-sm-6 control-label">Productive land under cocoa (ha)*</label>
                         <div class="col-sm-4">
+                            {% if input_type == "server" %}
+                            <input type="number" class="form-control" id="input4" name="input4" step=0.1 min=0 value="{{ server_4 }}">
+                            {% else %}
                             <input type="number" class="form-control" id="input4" name="input4" step=0.1 min=0 value="{{ request.args.get('input4') }}">
+                            {% endif %}
                         </div>
                     </div>
                      <div class="form-group">
                         <label for="input5" class="col-sm-6 control-label">Cocoa land owned (ha)</label>
                         <div class="col-sm-4">
+                            {% if input_type == "server" %}
+                            <input type="number" class="form-control" id="input5" name="input5" step=0.1 min=0 value="{{ server_5 }}">
+                            {% else %}
                             <input type="number" class="form-control" id="input5" name="input5" step=0.1 min=0 value="{{ request.args.get('input5') }}">
+                            {% endif %}
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inpu10" class="col-sm-6 control-label">Land used to cultivate all crops (ha)</label>
                         <div class="col-sm-4">
+                            {% if input_type == "server" %}
+                            <input type="number" class="form-control" id="input10" name="input10" step=0.1 min=0 value="{{ server_10 }}">
+                            {% else %}
                             <input type="number" class="form-control" id="input10" name="input10" step=0.1 min=0 value="{{ request.args.get('input10') }}">
+                            {% endif %}
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="input6" class="col-sm-6 control-label">Hectares with trees between 5 and 25 years old (ha)</label>
                         <div class="col-sm-4">
+                            {% if input_type == "server" %}
+                            <input type="number" class="form-control" id="input6" name="input6" step=0.1 min=0 value="{{ server_6 }}">
+                            {% else %}
                             <input type="number" class="form-control" id="input6" name="input6" step=0.1 min=0 value="{{ request.args.get('input6') }}">
+                            {% endif %}
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="input1" class="col-sm-6 control-label">Estimated income percentage from sales of cocoa (0 to 100)</label>
                         <div class="col-sm-4">
+                            {% if input_type == "server" %}
+                            <input type="number" class="form-control" id="input1" name="input1" min=0 max=100 value="{{ server_1 }}">
+                            {% else %}
                             <input type="number" class="form-control" id="input1" name="input1" min=0 max=100 value="{{ request.args.get('input1') }}">
+                            {% endif %}
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="input9" class="col-sm-6 control-label">Estimated income percentage from sales of other crops (0 to 100)</label>
                         <div class="col-sm-4">
+                            {% if input_type == "server" %}
+                            <input type="number" class="form-control" id="input9" name="input9" min=0 max=100 value="{{ server_9 }}">
+                            {% else %}
                             <input type="number" class="form-control" id="input9" name="input9" min=0 max=100 value="{{ request.args.get('input9') }}">
+                            {% endif %}
                         </div>
                     </div>
                     <div class="form-group" class="col-sm-6 control-label">
                         <label for="input7" class="col-sm-6 control-label">Estimated income percentage from own small business or trading (0 to 100)</label>
                         <div class="col-sm-4">
+                            {% if input_type == "server" %}
+                            <input type="number" class="form-control" id="input7" name="input7" min=0 max=100 value="{{ server_7 }}">
+                            {% else %}
                             <input type="number" class="form-control" id="input7" name="input7" min=0 max=100 value="{{ request.args.get('input7') }}">
+                            {% endif %}
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="input8" class="col-sm-6 control-label">Age of the head (years)</label>
                         <div class="col-sm-4">
+                            {% if input_type == "server" %}
+                            <input type="number" class="form-control" id="input8" name="input8" min=0 value="{{ server_8 }}">
+                            {% else %}
                             <input type="number" class="form-control" id="input8" name="input8" min=0 value="{{ request.args.get('input8') }}">
+                            {% endif %}
                         </div>
                     </div>
                     <p style="font-size:11px"><i>*Productive land under cocoa = Hectares with trees 5 years old and older</i></p>
@@ -83,5 +119,12 @@
             </div>
         </div>
     </div>
+
+    <form action="/go_mean" method="get" class="well form-horizontal">
+        <div class="col-lg-offset-5">
+            <br>
+            <button type="submit" class="btn btn-lg btn-success">Load mean values</button>
+        </div>
+    </form>
 </div>
 {% endblock %}
