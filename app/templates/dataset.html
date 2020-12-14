@@ -14,19 +14,18 @@
 	
 	<div class="dropdown" id="myDropdown">
 	  <button class="btn btn-primary dropdown-toggle mr-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
- 		Distribution of [{{ids[1]}}]
+ 		Distribution of [{{ids_training[0]}}]
 	    <span class="caret"></span>
 	  </button>
 	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-	  	{% for id in ids %}
-	  		{% if id != ids[0] %}
-	    		<li><a href='javascript:void();'>{{id}}</a></li>
-	    	{% endif %}
+	  	{% for id in ids_training %}
+    		<li><a href='javascript:void();'>{{id}}</a></li>
 		{% endfor %}
 	  </ul>
 	</div>
 
-	<div id="selected-graph"></div>
+	<div id="selected-graph-training"></div>
+	<div id="selected-graph-testing"></div>
 	
 	<script type="text/javascript">
 		// process graph object
@@ -37,9 +36,19 @@
 		Plotly.plot(ids[0], graphs[0].data, graphs[0].layout);
 
 	    //cache the select and span elements
-		var graph_placeholder = document.getElementById("selected-graph");
+		var graph_placeholder_training = document.getElementById("selected-graph-training");
+		var graph_placeholder_testing = document.getElementById("selected-graph-testing");
+
+		// process training and testing graphs
+	    const graphs_training = {{graphJSON_training | safe}};
+	    const ids_training = {{ids_training | safe}};
+
+	    const graphs_testing = {{graphJSON_testing | safe}};
+	    const ids_testing = {{ids_testing | safe}};
+
 		// plot first distribution graph:
-		Plotly.plot("selected-graph", graphs[1].data, graphs[1].layout);
+		Plotly.plot("selected-graph-training", graphs_training[0].data, graphs_training[0].layout);
+		Plotly.plot("selected-graph-testing", graphs_testing[0].data, graphs_testing[0].layout);
 
 		//Update graph when it changes
 		$(function(){
@@ -48,8 +57,9 @@
 
 	    	$(".btn:first-child").text("Distribution of [".concat($(this).text(),"]"));
 
-	    	var this_id = ids.indexOf($(this).text());
-		    Plotly.newPlot("selected-graph", graphs[this_id].data, graphs[this_id].layout);
+	    	var this_id = ids_training.indexOf($(this).text());
+		    Plotly.newPlot("selected-graph-training", graphs_training[this_id].data, graphs_training[this_id].layout);
+		    Plotly.newPlot("selected-graph-testing", graphs_testing[this_id].data, graphs_testing[this_id].layout);
 		
 		  });
 

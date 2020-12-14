@@ -133,16 +133,30 @@ def dataset():
     ]
     ids = ['Living Income Achieved']
 
-    # create histograms for each column
+    # create histograms for each column, each set
+    graphs_training = []
+    ids_training = []
+
+    graphs_testing = []
+    ids_testing = []
+
     for col in X_train.columns:
-        graphs.append(LI_histogram(col, X_train, y_train))
-        ids.append(col)        
+        graphs_training.append(LI_histogram(col, X_train, y_train, "Training set"))
+        ids_training.append(col)
+
+        graphs_testing.append(LI_histogram(col, X_test, y_test, "Testing set"))
+        ids_testing.append(col)        
 
     # encode plotly graphs in JSON
     graphJSON = json.dumps(graphs, cls=plotly.utils.PlotlyJSONEncoder)
+    graphJSON_training = json.dumps(graphs_training, cls=plotly.utils.PlotlyJSONEncoder)
+    graphJSON_testing = json.dumps(graphs_testing, cls=plotly.utils.PlotlyJSONEncoder)
 
     # render web page with plotly graphs
-    return render_template('dataset.html', ids=ids, graphJSON=graphJSON, 
+    return render_template('dataset.html', 
+        ids=ids, graphJSON=graphJSON, 
+        ids_training = ids_training, graphJSON_training = graphJSON_training,
+        ids_testing = ids_testing, graphJSON_testing = graphJSON_testing,
         n_obs_train = n_obs_train, n_obs_test = n_obs_test, 
         train_share = train_share, test_share = test_share,
         n_features = n_features)
