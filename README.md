@@ -114,7 +114,8 @@ There are 3 write-ups related to this project:
 
 Marcelo Tyszler. www.marcelotyszler.com. mtyszler@gmail.com
 
-![https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white](https://www.linkedin.com/in/mtyszler/)
+[![image](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mtyszler/)
+
 
 ## License
 [![License: CC BY-SA 4.0](https://licensebuttons.net/l/by-sa/4.0/80x15.png)](https://creativecommons.org/licenses/by-sa/4.0/)
