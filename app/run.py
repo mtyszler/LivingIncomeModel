@@ -47,7 +47,7 @@ def index():
     # render base page
     return render_template('classifier.html')
 
-def LI_histogram(colname, features, target):
+def LI_histogram(colname, features, target, set_name):
     '''
     Create a histogram overlaying those who achieved vs 
     those who did not achieved a Living Income
@@ -76,7 +76,7 @@ def LI_histogram(colname, features, target):
             ],
 
             'layout': {
-                'title': 'Distribution of [' + colname +']',
+                'title': set_name +': Distribution of [' + colname +']',
                 'yaxis': {
                     'title': "Proportion (%)",
                     #'range': [1, 100],
