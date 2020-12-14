@@ -48,7 +48,7 @@ def index():
     # render base page
     return render_template('classifier.html')
 
-def LI_histogram(colname):
+def LI_histogram(colname, features, target):
     '''
     Create a histogram overlaying those who achieved vs 
     those who did not achieved a Living Income
@@ -62,14 +62,14 @@ def LI_histogram(colname):
                 {
                     'type':'histogram',
                     'histnorm': 'percent',
-                    'x':data[data['Living Income Achieved']==False][colname],
+                    'x':features[target==False][colname],
                     'name': 'Did not achieve',
                     'opacity': '0.5'
                 },
                 {
                     'type':'histogram',
                     'histnorm': 'percent',
-                    'x':data[data['Living Income Achieved']==True][colname],
+                    'x':features[target==True][colname],
                     'name': 'Achieved',
                     'opacity': '0.5'
                 }
@@ -95,19 +95,17 @@ def LI_histogram(colname):
 @app.route('/training')
 def training():
     # get shape info:
-    n_obs = len(data.index) 
-    n_features = len(data.columns)-1
+    n_obs = len(X_train.index) 
+    n_features = len(X_train.columns)
 
-    # extract data needed for visuals
-    LI_counts = data.groupby('Living Income Achieved').count().iloc[:,0]/n_obs*100
-
+    
     # create visuals
     graphs = [
-        # graph 1
+        # graph 1: bar chart of number of household achieving the LI
         {
             'data': [
                 Bar(
-                    y=LI_counts,
+                    y=y_train.value_counts()/n_obs*100,
                     x=['Did not achieve', 'Achieved']
                 )
             ],
@@ -125,8 +123,8 @@ def training():
     ids = ['Living Income Achieved']
 
     # create histograms for each column
-    for col in data.columns[1:]:
-        graphs.append(LI_histogram(col))
+    for col in X_train.columns:
+        graphs.append(LI_histogram(col, X_train, y_train))
         ids.append(col)        
 
     # encode plotly graphs in JSON
