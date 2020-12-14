@@ -92,8 +92,8 @@ def LI_histogram(colname, features, target):
 
     return LI
 
-@app.route('/training')
-def training():
+@app.route('/dataset')
+def dataset():
     # get shape info:
     n_obs_train = len(X_train.index) 
     n_features = len(X_train.columns)
@@ -134,7 +134,10 @@ def training():
     graphJSON = json.dumps(graphs, cls=plotly.utils.PlotlyJSONEncoder)
 
     # render web page with plotly graphs
-    return render_template('training.html', ids=ids, graphJSON=graphJSON, n_obs = n_obs, n_features = n_features)
+    return render_template('dataset.html', ids=ids, graphJSON=graphJSON, 
+        n_obs_train = n_obs_train, n_obs_test = n_obs_test, 
+        train_share = train_share, test_share = test_share,
+        n_features = n_features)
 
 
 # web page that handles user query and displays model results
