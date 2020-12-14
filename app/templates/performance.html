@@ -1,49 +1,73 @@
 {% extends "master.html" %}
 
-{% block user_classifier %}
+{% block content %}
 <div class="page-header">
     <br>
     <h1 class="text-center">Performance of the ML model</h1>
     <p class="text-center">The model had an 
-        <strong>accuracy</strong> of 95%, 
-        <strong>precision</strong> of 74%, 
-        <strong>recall</strong> of 67% and a 
-        <strong>f1-score</strong> of 69% in the testing set</p>
+        <strong>accuracy</strong> of {{accuracy}}%, 
+        <strong>precision</strong> of {{precision}}%, 
+        <strong>recall</strong> of {{recall}}% and a 
+        <strong>fbeta-score</strong>(beta=0.5) of {{fscore}}% in the testing set</p>
 </div>
 
-<div class="jumbotron">
-    <div class="container">
-        <p class="text-center"><strong> Sample message from the training dataset </strong> </p>
-        <div class="row">
-            <div class="col-lg-12 form-group-lg">
-                <p class="text-center text-muted">{{msg}}</p>
-                <p class="text-center"><a class="btn btn-success btn-lg" href="/performance" role="button">randomize message</a></p>
-            </div>
-        </div>
-    </div>
+
+<div class="container">
+
+    <p class="text-center">See the confusion table on the testing set:</p>
+    <br>
+
+    <style type="text/css">
+    .tg  {border-collapse:collapse;border-color:#9ABAD9;border-spacing:0;}
+    .tg .center {margin-left: auto; margin-right: auto;}
+    .tg td{background-color:#EBF5FF;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#444;
+      font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg th{background-color:#409cff;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#fff;
+      font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg .tg-g4tm{background-color:#409cff;border-color:#333333;text-align:center;vertical-align:middle;color:#fff}
+    .tg .tg-zv4m{border-width:0px;background-color:#ffffff;text-align:center;vertical-align:top}
+    .tg .tg-ao2g{border-color:#333333;text-align:center;vertical-align:top}
+    .tg .tg-de2y{border-color:#333333;text-align:center;vertical-align:top}
+    .tg.center {
+      margin-left: auto; 
+      margin-right: auto;
+    }
+    </style>
+
+
+    <table class="center tg">
+        <thead>
+          <tr>
+            <th class="tg-zv4m"></th>
+            <th class="tg-zv4m"></th>
+            <th class="tg-ao2g" colspan="2">Predicted classification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="tg-zv4m"></td>
+            <td class="tg-zv4m"></td>
+            <td class="tg-de2y">Did not achieve</td>
+            <td class="tg-de2y">Achieved</td>
+          </tr>
+          <tr>
+            <td class="tg-g4tm" rowspan="2">True classification</td>
+            <td class="tg-de2y">Did not achieve</td>
+            <td class="tg-de2y">{{ff}}</td>
+            <td class="tg-de2y">{{ft}}</td>
+          </tr>
+          <tr>
+            <td class="tg-de2y">Achieved</td>
+            <td class="tg-de2y">{{tf}}</td>
+            <td class="tg-de2y">{{tt}}</td>
+          </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <p class="text-center">This means that from the {{real_t}} households that achieved the living income benchmark, {{tt}} where predicted identified (<i>recall</i>)</p>
+    <p class="text-center">This means that from the {{pred_t}} households predicted to achieved the living income benchmark, {{tt}} where correct (<i>precision</i>)</p>
+
 </div>
-{% endblock %}
 
-{% block content %}
-<p>For the example above, there were {{correct}} <strong>correct</strong> classification(s) and {{incorrect}} <strong>incorrect</strong> classification(s)</p>
-<br>
-
-<table class="table">
-    <tr>
-        <th>Category</th>
-        <th>Target</th>
-        <th>Prediction</th>
-    </tr>
-    {% for category, target, prediction in classification_result %}
-        {% if target == prediction %}
-            <tr class="success">
-        {% else %}
-            <tr class="danger">
-        {% endif %}
-                <td>{{category.replace('_', ' ')}}</td>
-                <td>{{target}}</td>
-                <td>{{prediction}}</td>
-            </tr>
-    {% endfor %}
-</table>
 {% endblock %}

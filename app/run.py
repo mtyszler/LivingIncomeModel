@@ -9,6 +9,9 @@ from flask import render_template, request, jsonify
 import joblib
 
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import precision_recall_fscore_support
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import confusion_matrix
 
 import sys
 
@@ -207,35 +210,36 @@ def go():
 
 @app.route('/performance')
 def performance():
+
+    # test set predictions:
+    test_predictions = model.predict(X_test)
     
-    # gets the number of messages & categs
-    n_msgs = len(df.index) 
-    n_categs = len(df.iloc[:, 4:].columns)
+    # performance metrics:
+    accuracy = np.int(np.round(accuracy_score(y_test, test_predictions)*100,0))
+    prfs = precision_recall_fscore_support(y_test, test_predictions, beta = 0.5, average = 'binary')
+    precision = np.int(np.round(prfs[0]*100,0))
+    recall = np.int(np.round(prfs[1]*100,0))
+    fscore = np.int(np.round(prfs[2]*100,0))
 
+    cm = confusion_matrix(y_test, test_predictions)
+    ff = cm[0][0] # false, predicted false
+    ft = cm[0][1] # false, predicted true
+    tf = cm[1][0] # true, predicted false
+    tt = cm[1][1] # true, predicted true
+
+    real_t = tf+tt
+    pred_t = ft+tt
     # selects a random row:
-    row_number = random.randrange(0,n_msgs)
-
-    # picks the message and targets:
-    msg = df['message'][row_number]
-    targets = df.iloc[row_number, 4:]
-
-    # predict:
-    predictions = model.predict([msg])[0]
-
-    # number of correct classifications:
-    correct_classifications = (targets == predictions).sum()
-    incorrect_classifications = n_categs - correct_classifications
-
-    # combine it all
-    classification_results = zip(df.columns[4:], targets.astype(bool), predictions.astype(bool))
 
     # render perfomance page
     return render_template(
         'performance.html',
-        msg = msg,
-        classification_result=classification_results,
-        correct = correct_classifications,
-        incorrect = incorrect_classifications
+        accuracy=accuracy,
+        precision = precision,
+        recall = recall,
+        fscore = fscore,
+        ff=ff, ft=ft, tf=tf,tt=tt,
+        real_t=real_t, pred_t=pred_t
         )
 
 
