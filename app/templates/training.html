@@ -3,8 +3,10 @@
 {% block content %}
     <div class="page-header">
     	<br>
-        <h1 class="text-center">Overview of Training Dataset</h1>
-        <p class="text-center"> The training dataset has {{n_obs}} observations and {{n_features}} features </p>
+        <h1 class="text-center">Overview of the Dataset used for model training and testing</h1>
+        <p class="text-center"> There are <b>{{n_features}}</b> features used</p>
+        <p class="text-center"> The training dataset has <b>{{n_obs_train}}</b> observations ({{train_share}}%) </p>
+        <p class="text-center"> The testing dataset has <b>{{n_obs_test}}</b> observations ({{test_share}}%)</p>
     </div>
 
 

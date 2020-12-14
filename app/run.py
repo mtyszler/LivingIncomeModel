@@ -95,17 +95,20 @@ def LI_histogram(colname, features, target):
 @app.route('/training')
 def training():
     # get shape info:
-    n_obs = len(X_train.index) 
+    n_obs_train = len(X_train.index) 
     n_features = len(X_train.columns)
+    n_obs_test = len(X_test.index) 
 
-    
+    train_share = np.int(np.round(n_obs_train/(n_obs_train+n_obs_test)*100,0))
+    test_share = np.int(100-train_share)
+
     # create visuals
     graphs = [
         # graph 1: bar chart of number of household achieving the LI
         {
             'data': [
                 Bar(
-                    y=y_train.value_counts()/n_obs*100,
+                    y=y_train.value_counts()/n_obs_train*100,
                     x=['Did not achieve', 'Achieved']
                 )
             ],
