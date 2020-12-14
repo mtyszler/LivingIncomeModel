@@ -25,7 +25,7 @@ The key files in this repo are:
 
 #### Machine Learning model
 
-The model can be downloaded [here]()(https://github.com/mtyszler/LivingIncomeModel/raw/master/models/LI_simplified_model.pkl).
+The model can be downloaded [here](https://github.com/mtyszler/LivingIncomeModel/raw/master/models/LI_simplified_model.pkl).
 
 To use it in `python`:
 
