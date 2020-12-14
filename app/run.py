@@ -9,6 +9,8 @@ from flask import render_template, request, jsonify
 from plotly.graph_objs import Bar
 import joblib
 
+from sklearn.model_selection import train_test_split
+
 import sys
 
 sys.path.append('../')
@@ -29,6 +31,15 @@ try:
     data = joblib.load("../data/data_for_restricted_ML.pkl")
 except:
     data = joblib.load("data/data_for_restricted_ML.pkl")
+
+# split data into the target and features 
+target = data['Living Income Achieved']
+data.drop(['Living Income Achieved'], axis = 1, inplace = True)
+
+# split the data into training and testing sets used for model tuning:
+X_train, X_test, y_train, y_test = train_test_split(data, target,
+                                                    train_size=0.75, test_size=0.25,
+                                                   random_state = 32)
 
 # index webpage displays cool visuals and receives user input text for model
 @app.route('/')
