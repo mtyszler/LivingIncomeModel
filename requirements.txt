@@ -21,7 +21,6 @@ plotly==2.7.0
 pyrsistent==0.17.3
 python-dateutil==2.8.1
 pytz==2020.4
-pywin32==300
 requests==2.25.0
 scikit-learn==0.23.2
 scipy==1.5.4
