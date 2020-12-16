@@ -14,6 +14,8 @@ The work is advanced in two ways:
 1. The model is simplified to use only 9 variables, which makes it very accesible (applied) researchers and decision makers
 2. The model is made directly available in a [web app](https://living-income-model.herokuapp.com/)
 
+The web app is inspired by the web app develop for the project https://github.com/mtyszler/Disaster-Response-Project
+
 ## Key files
 The key files in this repo are:
 
