@@ -4,7 +4,7 @@
 
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
-[Last update 14/12/2020] 
+[Last update 17/12/2020] 
 
 In this repo I use previous [data](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/82TWZJ) from a [larger project](https://www.kit.nl/project/demystifying-cocoa-sector/) to develop a Machine Learning model to predict if farmers reach the living income benchmark value, **using only 9 indicators**.
 
@@ -13,6 +13,8 @@ The work is advanced in two ways:
 
 1. The model is simplified to use only 9 variables, which makes it very accesible (applied) researchers and decision makers
 2. The model is made directly available in a [web app](https://living-income-model.herokuapp.com/)
+
+The web app is inspired by the web app develop for the project https://github.com/mtyszler/Disaster-Response-Project
 
 ## Key files
 The key files in this repo are:
@@ -107,8 +109,8 @@ Because the project is deployed at Heroku, which uses **Python 3.6.12** package 
 There are 3 write-ups related to this project:
 
 * An initial non-technical blog post about the findings of the initial analysis can be found at [Medium](https://medium.com/@tyszler.jobs/are-cocoa-farmers-reaching-a-living-income-f7724af574c4?sk=344c18d46a7fd402d3a137061c6ba89a)
-* A follow-up non-technical blog post about the findings of the this analysis and web app can be found at [Medium](https://medium.com/@tyszler.jobs/are-cocoa-farmers-reaching-a-living-income-f7724af574c4?sk=344c18d46a7fd402d3a137061c6ba89a)
-* A technical write-up about this project can be found at [Medium](https://medium.com/@tyszler.jobs/are-cocoa-farmers-reaching-a-living-income-f7724af574c4?sk=344c18d46a7fd402d3a137061c6ba89a)
+* A follow-up non-technical blog post about the findings of the this analysis and web app can be found at [Medium](https://mtyszler.medium.com/are-farmers-reaching-a-living-income-c15523a564b2)
+* A technical write-up about this project can be found at [Medium](https://mtyszler.medium.com/are-farmers-reaching-a-living-income-the-machine-learning-technical-companion-c8e4574868da)
 
 ### Author
 
