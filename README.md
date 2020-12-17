@@ -23,7 +23,7 @@ The key files in this repo are:
 
 * [LivingIncomeAnalysis.ipynb](analysis%20notebooks/LivingIncomeAnalysis.ipynb) : notebook where I wrangle the data, compute indicators and analyze whether farmers reach a living income
 * [LivingIncome_MachineLearning.ipynb](analysis%20notebooks/LivingIncome_MachineLearning.ipynb) : notebook where I tune and fit the broad machine learning model
-* [LivingIncome_Model.ipynb](analysis%20notebooks/LivingIncome_MachineLearning.ipynb) : notebook where I tune and fit the restricted machine learning model with the top 10 features
+* [LivingIncome_Model.ipynb](analysis%20notebooks/LivingIncome_Model.ipynb) : notebook where I tune and fit the restricted machine learning model with the top 10 features
 
 #### Machine Learning model
 
