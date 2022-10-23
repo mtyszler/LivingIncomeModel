@@ -6,6 +6,8 @@
 
 [Last update 17/12/2020] 
 
+_pushed on 23/10/2022 to update heroku build_
+
 In this repo I use previous [data](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/82TWZJ) from a [larger project](https://www.kit.nl/project/demystifying-cocoa-sector/) to develop a Machine Learning model to predict if farmers reach the living income benchmark value, **using only 9 indicators**.
 
 This is a continuation of the work presented in [Living Income Analysis](https://github.com/mtyszler/LivingIncomeAnalysis). 
