@@ -6,7 +6,7 @@
 
 [Last update 17/12/2020] 
 
-_notebooks re-run on 24/10/2022 to update heroku build matching python 3.10.6 and updated dependencies_
+_notebooks re-run on 24/10/2022  (except TPOT) to update heroku build matching python 3.10.8 and updated dependencies_
 
 In this repo I use previous [data](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/82TWZJ) from a [larger project](https://www.kit.nl/project/demystifying-cocoa-sector/) to develop a Machine Learning model to predict if farmers reach the living income benchmark value, **using only 9 indicators**.
 
@@ -101,7 +101,7 @@ A live version of the app can be see at https://living-income-model.herokuapp.co
 
 ### Web app Requirements
 
-This projects uses **Python 3.10.6** and was developed in windows 10 system. Python package requirements for the web app can be found in [`requirements.txt`](https://github.com/mtyszler/LivingIncomeModel/blob/main/requirements.txt).
+This projects uses **Python 3.10.8** and was developed in windows 10 system. Python package requirements for the web app can be found in [`requirements.txt`](https://github.com/mtyszler/LivingIncomeModel/blob/main/requirements.txt).
 
 Because the project is deployed at Heroku, build-22.
 
